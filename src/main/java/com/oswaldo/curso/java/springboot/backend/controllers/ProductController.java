@@ -72,7 +72,7 @@ public class ProductController {
             Product productDB = optionalProduct.get(); //se puede usar .get() o .orElseThrow()
             productDB.setDescription(product.getDescription());
             productDB.setName(product.getName());
-            productDB.setPrecio(product.getPrecio());
+            productDB.setPrice(product.getPrice());
             //Lo que hace es pasar el status de la petición
             return ResponseEntity.status(HttpStatus.CREATED).body(service.save(productDB));
         }
@@ -85,9 +85,9 @@ public class ProductController {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Product> delete(@PathVariable Long id) {
-        Optional<Product> optionalProduct = service.findById(id);
+        Optional<Product> optionalProduct = service.deleteById(id);
         if (optionalProduct.isPresent()) {
-            Product productDelete = service.deleteById(id).orElseThrow();
+            Product productDelete = optionalProduct.orElseThrow();
             return ResponseEntity.status(HttpStatus.OK).body(productDelete);
         }
         return ResponseEntity.notFound().build();

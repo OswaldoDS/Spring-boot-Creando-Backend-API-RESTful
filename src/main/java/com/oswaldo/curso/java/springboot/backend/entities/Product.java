@@ -20,7 +20,7 @@ public class Product {
     private Long id;
     private String name;
     private String description;
-    private Long precio;
+    private Double price;
 
     public Long getId() {
         return id;
@@ -46,12 +46,12 @@ public class Product {
         this.description = description;
     }
 
-    public Long getPrecio() {
-        return precio;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setPrecio(Long precio) {
-        this.precio = precio;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
 }

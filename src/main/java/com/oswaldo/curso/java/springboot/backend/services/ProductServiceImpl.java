@@ -12,6 +12,10 @@ import java.util.Optional;
 public class ProductServiceImpl implements ProductService{
     final private ProductRepository respository;
 
+    /***
+     *
+     * @param respository Ya que se implementarán los métodos que tiene la Interface
+     */
     public ProductServiceImpl(ProductRepository respository) {
         this.respository = respository;
     }
@@ -20,7 +24,7 @@ public class ProductServiceImpl implements ProductService{
     @Transactional(readOnly = true)
     @Override
     public List<Product> findAll() {
-        return (List<Product>) respository.findAll();
+        return respository.findAll(); //Se quitó el cast -> (List<Product>)
     }
 
     @Override
